@@ -49,9 +49,6 @@ def run(self, IMG_DIR):
     - label = Specific category name (list)
     - complete = Whether model detects items well
 ```
-```
-    
-```
 
 Usage with Example code
 ------------
