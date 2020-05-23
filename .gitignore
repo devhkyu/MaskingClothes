@@ -205,3 +205,6 @@ dmypy.json
 # Except weight files
 *.h5
 *.json
+
+# Except directory
+Output/
