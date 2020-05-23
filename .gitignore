@@ -194,3 +194,14 @@ dmypy.json
 .pyre/
 
 # End of https://www.gitignore.io/api/python,pycharm+all
+
+# Except image files
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+
+# Except weight files
+*.h5
+*.json
