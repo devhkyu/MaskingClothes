@@ -207,4 +207,4 @@ dmypy.json
 *.json
 
 # Except directory
-Output/
+Result/

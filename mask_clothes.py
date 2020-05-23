@@ -50,7 +50,7 @@ def refine_masks(masks, rois):
 # img_size(default: 512)
 # threshold(default: 0.7)
 # gpu_count(default: 1)
-# images_per_gpu(default: 4)
+# images_per_gpu(default: 1)
 ##############################
 class Model:
     def __init__(self, img_size=None, threshold=None, gpu_count=None, images_per_gpu=None):
@@ -72,8 +72,6 @@ class Model:
         class InferenceConfig(Config):
             NAME = "fashion"
             NUM_CLASSES = self.NUM_CATS + 1  # +1 for the background class
-            GPU_COUNT = 1
-            IMAGES_PER_GPU = 4
             BACKBONE = 'resnet101'
             IMAGE_MIN_DIM = self.IMAGE_SIZE
             IMAGE_MAX_DIM = self.IMAGE_SIZE
@@ -131,21 +129,23 @@ class Model:
             temp = img[rois[i][0]:rois[i][2], rois[i][1]:rois[i][3]]
             if category < 5:
                 masked_image.append(Image.fromarray(temp))
-                label.append(self.label_names[inx])
+                label.append(self.label_names[category])
                 label_type.append('upper')
                 upper += 1
             elif category < 9:
                 masked_image.append(Image.fromarray(temp))
-                label.append(self.label_names[inx])
+                label.append(self.label_names[category])
                 label_type.append('lower')
                 lower += 1
             elif category < 13:
                 masked_image.append(Image.fromarray(temp))
-                label.append(self.label_names[inx])
+                label.append(self.label_names[category])
                 label_type.append('whole')
                 whole += 1
             i = i + 1
         if (upper is 1) and (lower is 1):
+            complete = True
+        elif (whole is 1) and (upper is 1) and (lower is 1):
             complete = True
         elif whole is 1:
             complete = True
