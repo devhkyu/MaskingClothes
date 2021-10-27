@@ -1,7 +1,7 @@
 MaskingClothes
 ==============
 `MaskingClothes` is an `OpenAPI` that masks images and classifies upper, lower, whole items using Mask-RCNN(matterport).
-<br>`<Reference> Smart Coordinator: https://github.com/ChoiHyungKyu/Smart_Coordinator`
+<br><br> This is the `core module` of my graduation work called [SmartCoordinator](https://github.com/ChoiHyungKyu/Smart_Coordinator).
 
 Installation
 ------------
